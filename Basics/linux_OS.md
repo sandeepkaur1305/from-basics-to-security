@@ -45,13 +45,8 @@ If you understand Linux deeply, you understand how real systems are attacked and
 
 # 2. Linux Architecture
 
-Hardware
-↓
-Kernel
-↓
-Shell
-↓
-User Applications
+Hardware ----> Kernel ----> Shell ----> User ----> Applications
+
 
 ## Kernel Responsibilities
 - CPU scheduling  
@@ -274,8 +269,8 @@ for ip in $(cat hosts.txt); do
  ping -c 1 $ip
 done
 
----
 
+```
 # 15. Security Tools (Explained)
 
 ## Offensive Tools
