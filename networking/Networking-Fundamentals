@@ -1,0 +1,1284 @@
+# Networking Fundamentals
+
+## Table of Contents
+
+* [What is a Computer Network?](#what-is-a-computer-network)
+* [Why Do We Need Networks?](#why-do-we-need-networks)
+* [Network Communication](#network-communication)
+* [Data and Packets](#data-and-packets)
+* [Network Protocols](#network-protocols)
+* [Network Interface Card](#network-interface-card)
+* [Network Medium](#network-medium)
+* [Network Segment](#network-segment)
+* [Bandwidth, Latency, and Throughput](#bandwidth-latency-and-throughput)
+* [Types of Networks](#types-of-networks)
+* [Network Topologies](#network-topologies)
+* [Networking Devices](#networking-devices)
+* [Hub vs Switch](#hub-vs-switch)
+* [Switch vs Router](#switch-vs-router)
+* [Router vs Modem](#router-vs-modem)
+* [Types of Network Communication](#types-of-network-communication)
+* [Basic Network Configuration](#basic-network-configuration)
+* [Cybersecurity Relevance](#cybersecurity-relevance)
+* [What I Learned](#what-i-learned)
+
+---
+
+# What is a Computer Network?
+
+A **computer network** is a group of two or more devices connected together so that they can communicate and exchange data.
+
+Devices connected to a network can include:
+
+* Computers
+* Servers
+* Smartphones
+* Printers
+* Routers
+* Switches
+* Internet of Things (IoT) devices
+* Security cameras
+
+For example, when a computer accesses a website, the computer communicates with a web server through a network.
+
+A simple network can look like this:
+
+```text
+Computer A -------- Switch -------- Computer B
+                       |
+                    Computer C
+```
+
+The devices connected to a network are often called **hosts** or **nodes**.
+
+---
+
+# Why Do We Need Networks?
+
+Networks allow devices to communicate and share resources.
+
+Some common uses of computer networks include:
+
+### Communication
+
+Networks allow users and devices to exchange information.
+
+Examples:
+
+* Email
+* Messaging
+* Video calls
+* Voice calls
+
+### File Sharing
+
+Users can transfer files between systems over a network.
+
+For example:
+
+```text
+Computer A ---- File Transfer ----> Computer B
+```
+
+### Resource Sharing
+
+Multiple devices can share the same resources.
+
+Examples include:
+
+* Printers
+* Storage servers
+* Internet connections
+
+### Remote Access
+
+A user can access another system through a network.
+
+Protocols such as SSH and Remote Desktop Protocol (RDP) are commonly used for remote access.
+
+### Internet Access
+
+Networks allow devices to communicate with systems located anywhere in the world through the Internet.
+
+---
+
+# Network Communication
+
+Network communication is the process of transferring information between devices.
+
+Basic communication requires:
+
+```text
+Sender
+   |
+   v
+Communication Medium
+   |
+   v
+Receiver
+```
+
+For example:
+
+```text
+Laptop ---- Ethernet Cable ---- Router
+```
+
+The laptop is the **sender**, the Ethernet cable is the **communication medium**, and the router is the **receiver**.
+
+However, network communication also requires rules.
+
+These rules are called **protocols**.
+
+---
+
+# Data and Packets
+
+When information is sent across a network, it is usually not transmitted as one large piece of data.
+
+Instead, the data is divided into smaller units.
+
+These units are commonly called **packets**.
+
+For example, suppose a computer wants to send a large file.
+
+Instead of sending:
+
+```text
+[                    LARGE FILE                    ]
+```
+
+The file may be divided into smaller pieces:
+
+```text
+[Packet 1]
+[Packet 2]
+[Packet 3]
+[Packet 4]
+[Packet 5]
+```
+
+Each packet travels through the network toward the destination.
+
+The receiving system processes the packets and reconstructs the original data.
+
+Packets usually contain two major parts:
+
+```text
+Header
+Payload
+```
+
+## Header
+
+The header contains information required for network communication.
+
+Depending on the protocol, it may contain:
+
+* Source address
+* Destination address
+* Protocol information
+* Sequence number
+* Port number
+
+## Payload
+
+The payload contains the actual data being transmitted.
+
+For example:
+
+```text
++----------------------+---------------------------+
+|        Header        |          Payload          |
++----------------------+---------------------------+
+```
+
+A packet can be compared to a postal package.
+
+The **header** is similar to the address written on the package.
+
+The **payload** is the actual item inside the package.
+
+---
+
+# Network Protocols
+
+A **network protocol** is a set of rules that defines how devices communicate over a network.
+
+Without protocols, devices would not know how to exchange or interpret information.
+
+For example, imagine two people speaking completely different languages.
+
+```text
+Person A: Punjabi
+Person B: Japanese
+```
+
+Communication would be difficult without a common language.
+
+Network protocols act as a common communication language for devices.
+
+Some common network protocols are:
+
+| Protocol | Purpose                                     |
+| -------- | ------------------------------------------- |
+| HTTP     | Web communication                           |
+| HTTPS    | Secure web communication                    |
+| TCP      | Reliable data transmission                  |
+| UDP      | Fast connectionless communication           |
+| IP       | Logical addressing and packet delivery      |
+| DNS      | Converts domain names to IP addresses       |
+| DHCP     | Automatically assigns network configuration |
+| FTP      | File transfer                               |
+| SSH      | Secure remote access                        |
+| SMTP     | Sending email                               |
+
+Different protocols perform different tasks during network communication.
+
+---
+
+# Network Interface Card
+
+A **Network Interface Card (NIC)** is a hardware component that allows a device to connect to a network.
+
+A NIC can support:
+
+* Ethernet connections
+* Wireless connections
+
+For example:
+
+```text
+Computer
+   |
+   v
+Network Interface Card
+   |
+   v
+Ethernet Cable
+   |
+   v
+Switch
+```
+
+A network interface usually has a **MAC address**.
+
+The MAC address is used for local network communication.
+
+Modern computers may contain multiple network interfaces.
+
+For example:
+
+```text
+eth0  -> Ethernet Interface
+wlan0 -> Wireless Interface
+```
+
+On Linux, network interfaces can be viewed using:
+
+```bash
+ip addr
+```
+
+Another older command is:
+
+```bash
+ifconfig
+```
+
+---
+
+# Network Medium
+
+A **network medium** is the communication path used to transfer data between devices.
+
+Network media can be divided into two main categories.
+
+## Wired Media
+
+Wired networks use physical cables.
+
+Examples include:
+
+* Twisted pair cable
+* Coaxial cable
+* Fiber optic cable
+
+### Twisted Pair Cable
+
+Twisted pair cables are commonly used in Ethernet networks.
+
+Examples:
+
+```text
+Cat5e
+Cat6
+Cat6a
+```
+
+They commonly use an **RJ45 connector**.
+
+### Fiber Optic Cable
+
+Fiber optic cables transmit information using light.
+
+Advantages include:
+
+* High speed
+* Long distance communication
+* Resistance to electromagnetic interference
+
+### Coaxial Cable
+
+Coaxial cables contain a central conductor surrounded by insulation and shielding.
+
+They are commonly used in cable television and broadband systems.
+
+---
+
+## Wireless Media
+
+Wireless networks transmit information using electromagnetic waves.
+
+Examples include:
+
+* Wi-Fi
+* Bluetooth
+* Cellular networks
+* Satellite communication
+
+Wireless communication does not require a physical cable between devices.
+
+For example:
+
+```text
+Laptop )))))) Wi-Fi Router
+```
+
+---
+
+# Network Segment
+
+A **network segment** is a section of a network where devices communicate using a shared communication medium or logical network connection.
+
+Consider the following network:
+
+```text
+PC1 ----\
+         \
+PC2 ----- Switch
+         /
+PC3 ----/
+```
+
+The devices connected to the switch are part of the same local network.
+
+Network segmentation divides a large network into smaller sections.
+
+For example:
+
+```text
+Company Network
+      |
+      +------ HR Network
+      |
+      +------ Finance Network
+      |
+      +------ IT Network
+```
+
+Network segmentation provides several advantages:
+
+* Improved network performance
+* Reduced broadcast traffic
+* Better network management
+* Improved security
+* Isolation of sensitive systems
+
+Technologies such as **VLANs** can be used to logically segment networks.
+
+For example:
+
+```text
+VLAN 10 -> HR Department
+VLAN 20 -> Finance Department
+VLAN 30 -> IT Department
+```
+
+Even if devices are connected to the same physical switch, VLANs can logically separate them into different networks.
+
+---
+
+# Bandwidth, Latency, and Throughput
+
+Bandwidth, latency, and throughput are important concepts used to understand network performance.
+
+## Bandwidth
+
+**Bandwidth** is the maximum amount of data that a network connection can theoretically transfer within a specific amount of time.
+
+Bandwidth is commonly measured in:
+
+```text
+Kbps -> Kilobits per second
+Mbps -> Megabits per second
+Gbps -> Gigabits per second
+```
+
+For example:
+
+```text
+100 Mbps Internet Connection
+```
+
+This means the connection can theoretically transfer up to 100 megabits per second.
+
+Bandwidth can be compared to the width of a road.
+
+```text
+Small Road -> Low Bandwidth
+Large Highway -> High Bandwidth
+```
+
+A larger road can handle more vehicles.
+
+Similarly, higher bandwidth can handle more data.
+
+---
+
+## Latency
+
+**Latency** is the amount of time required for data to travel from the source to the destination.
+
+Latency is usually measured in **milliseconds (ms)**.
+
+For example:
+
+```text
+10 ms  -> Low Latency
+200 ms -> High Latency
+```
+
+Latency can be affected by:
+
+* Physical distance
+* Number of routers
+* Network congestion
+* Transmission medium
+* Processing delays
+
+The `ping` command can be used to measure network response time.
+
+```bash
+ping google.com
+```
+
+Example output:
+
+```text
+time=20ms
+```
+
+Lower latency generally means faster network response.
+
+---
+
+## Throughput
+
+**Throughput** is the actual amount of data successfully transferred through a network.
+
+For example:
+
+```text
+Bandwidth  = 100 Mbps
+Throughput = 75 Mbps
+```
+
+Although the network supports 100 Mbps, the actual transfer rate is only 75 Mbps.
+
+Throughput can be affected by:
+
+* Network congestion
+* Packet loss
+* Hardware performance
+* Protocol overhead
+* Network errors
+
+Therefore:
+
+```text
+Bandwidth = Maximum Capacity
+
+Throughput = Actual Data Transfer Rate
+```
+
+---
+
+# Types of Networks
+
+Networks can be classified based on their geographical size and purpose.
+
+## Personal Area Network (PAN)
+
+A **Personal Area Network** connects devices within a very short distance.
+
+Examples include:
+
+```text
+Phone <---- Bluetooth ----> Earbuds
+```
+
+Technologies commonly used in PANs include:
+
+* Bluetooth
+* USB
+* Near Field Communication (NFC)
+
+---
+
+## Local Area Network (LAN)
+
+A **Local Area Network** connects devices within a limited geographical area.
+
+Examples include:
+
+* Home
+* Office
+* Computer laboratory
+* School building
+
+Example:
+
+```text
+PC1 ----\
+PC2 ----- Switch ----- Router
+PC3 ----/
+```
+
+Ethernet and Wi-Fi are commonly used in LANs.
+
+---
+
+## Wireless Local Area Network (WLAN)
+
+A **WLAN** is a LAN that uses wireless communication.
+
+For example:
+
+```text
+Laptop ))))
+Phone  )))) Wi-Fi Router
+Tablet ))))
+```
+
+Wi-Fi networks are examples of WLANs.
+
+---
+
+## Metropolitan Area Network (MAN)
+
+A **Metropolitan Area Network** covers a larger geographical area such as a city.
+
+A MAN can connect multiple LANs.
+
+Example:
+
+```text
+Office A LAN
+      |
+      |
+City Network
+      |
+      |
+Office B LAN
+```
+
+---
+
+## Wide Area Network (WAN)
+
+A **Wide Area Network** covers a large geographical area.
+
+It can connect networks across:
+
+* Cities
+* Countries
+* Continents
+
+The Internet is the largest example of a WAN.
+
+Example:
+
+```text
+LAN in India
+      |
+      |
+   Internet
+      |
+      |
+LAN in USA
+```
+
+---
+
+# Network Topologies
+
+A **network topology** describes how devices are physically or logically arranged in a network.
+
+---
+
+## Star Topology
+
+In a star topology, all devices connect to a central device.
+
+The central device is usually a switch.
+
+```text
+        PC1
+         |
+PC2 --- Switch --- PC3
+         |
+        PC4
+```
+
+### Advantages
+
+* Easy to manage
+* Easy to add devices
+* Failure of one cable does not affect other devices
+* Commonly used in modern LANs
+
+### Disadvantages
+
+* Failure of the central switch can affect the entire network
+
+---
+
+## Bus Topology
+
+In a bus topology, all devices share a single communication cable.
+
+```text
+PC1 ---- PC2 ---- PC3 ---- PC4
+```
+
+### Advantages
+
+* Simple design
+* Requires less cable
+
+### Disadvantages
+
+* Cable failure can affect the entire network
+* Difficult to troubleshoot
+* Network performance decreases with more devices
+
+Bus topology is rarely used in modern Ethernet networks.
+
+---
+
+## Ring Topology
+
+In a ring topology, each device connects to two other devices.
+
+```text
+PC1 ------ PC2
+ |          |
+ |          |
+PC4 ------ PC3
+```
+
+Data travels through the ring.
+
+### Advantages
+
+* Organized data transmission
+
+### Disadvantages
+
+* Failure of a device or connection can affect communication
+* Difficult to expand
+
+---
+
+## Mesh Topology
+
+In a mesh topology, devices have multiple connections to other devices.
+
+```text
+PC1 -------- PC2
+ |\          /|
+ | \        / |
+ |  \      /  |
+ |   \    /   |
+PC3 -------- PC4
+```
+
+### Advantages
+
+* High redundancy
+* Multiple communication paths
+* High availability
+
+### Disadvantages
+
+* Expensive
+* Complex configuration
+* Requires more cables and interfaces
+
+Mesh designs are commonly used where network availability is important.
+
+---
+
+## Hybrid Topology
+
+A hybrid topology combines multiple network topologies.
+
+For example:
+
+```text
+Star Topology + Mesh Topology
+```
+
+Large enterprise networks commonly use hybrid designs.
+
+---
+
+# Networking Devices
+
+Different networking devices perform different functions.
+
+---
+
+## Hub
+
+A **hub** is a basic networking device that connects multiple devices.
+
+When a hub receives data, it sends the data to **all connected devices**.
+
+Example:
+
+```text
+PC1 sends data
+
+        Hub
+       / | \
+      /  |  \
+    PC2 PC3 PC4
+
+All devices receive the data.
+```
+
+Hubs do not intelligently forward network traffic.
+
+Because of this, hubs are inefficient and rarely used in modern networks.
+
+---
+
+## Switch
+
+A **switch** connects devices within a local network.
+
+Unlike a hub, a switch intelligently forwards Ethernet frames.
+
+A switch uses **MAC addresses** to determine where data should be sent.
+
+Example:
+
+```text
+PC1 ----\
+         \
+PC2 ----- Switch ----- PC4
+         /
+PC3 ----/
+```
+
+If PC1 sends data to PC3, the switch attempts to forward the frame only toward PC3.
+
+Switches maintain a **MAC address table**.
+
+Example:
+
+```text
+MAC Address          Port
+
+AA:AA:AA:AA:AA:AA    Fa0/1
+BB:BB:BB:BB:BB:BB    Fa0/2
+CC:CC:CC:CC:CC:CC    Fa0/3
+```
+
+Switches mainly operate at **Layer 2 of the OSI model**.
+
+---
+
+## Router
+
+A **router** connects different networks.
+
+Routers use **IP addresses** to forward packets between networks.
+
+Example:
+
+```text
+192.168.1.0/24
+       |
+       |
+     Router
+       |
+       |
+10.0.0.0/24
+```
+
+The router allows devices from the two networks to communicate if routing and security policies permit it.
+
+Routers maintain a **routing table**.
+
+A routing table contains information about available networks and paths.
+
+Routers mainly operate at **Layer 3 of the OSI model**.
+
+---
+
+## Modem
+
+A **modem** connects a home or organization to an Internet Service Provider (ISP).
+
+The word modem originally comes from:
+
+```text
+Modulator
++
+Demodulator
+```
+
+The modem converts signals so that data can travel over the ISP's communication infrastructure.
+
+Example:
+
+```text
+Internet
+   |
+  ISP
+   |
+ Modem
+   |
+ Router
+   |
+Switch / Wi-Fi
+   |
+Devices
+```
+
+Many home devices combine modem and router functionality.
+
+---
+
+## Wireless Access Point
+
+A **Wireless Access Point (AP)** allows wireless devices to connect to a network.
+
+Example:
+
+```text
+Laptop ))))
+Phone  )))) Access Point ---- Switch
+Tablet ))))
+```
+
+Access points are commonly used to provide Wi-Fi connectivity.
+
+---
+
+## Firewall
+
+A **firewall** monitors and controls network traffic based on security rules.
+
+A firewall can allow or block traffic.
+
+Example:
+
+```text
+Internet
+   |
+Firewall
+   |
+Internal Network
+```
+
+A firewall rule might say:
+
+```text
+Allow TCP Port 443
+Block TCP Port 23
+```
+
+This could allow HTTPS traffic while blocking Telnet traffic.
+
+Firewalls are important components of network security.
+
+---
+
+## Gateway
+
+A **gateway** is a device or system that provides access to another network.
+
+In most local networks, the router acts as the **default gateway**.
+
+Example:
+
+```text
+PC IP:      192.168.1.10
+Gateway:    192.168.1.1
+```
+
+If the computer wants to communicate with a device outside its local network, it sends the packet to the default gateway.
+
+Example:
+
+```text
+PC
+|
+| Destination: 8.8.8.8
+|
+Default Gateway
+|
+Internet
+```
+
+---
+
+# Hub vs Switch
+
+| Hub                           | Switch                               |
+| ----------------------------- | ------------------------------------ |
+| Sends data to all devices     | Forwards data based on MAC addresses |
+| Does not maintain a MAC table | Maintains a MAC address table        |
+| Less efficient                | More efficient                       |
+| Mostly Layer 1                | Mainly Layer 2                       |
+| Rarely used today             | Commonly used in LANs                |
+
+Example:
+
+```text
+HUB
+
+PC1 sends data
+      |
+      v
+     HUB
+   /  |  \
+ PC2 PC3 PC4
+
+Everyone receives it.
+```
+
+```text
+SWITCH
+
+PC1 sends data to PC3
+      |
+      v
+    SWITCH
+      |
+      v
+     PC3
+```
+
+---
+
+# Switch vs Router
+
+| Switch                      | Router                  |
+| --------------------------- | ----------------------- |
+| Connects devices            | Connects networks       |
+| Uses MAC addresses          | Uses IP addresses       |
+| Mainly Layer 2              | Layer 3                 |
+| Maintains MAC address table | Maintains routing table |
+| Used inside LANs            | Used between networks   |
+
+Example:
+
+```text
+PC1 ----\
+         Switch
+PC2 ----/
+           |
+         Router
+           |
+        Internet
+```
+
+The switch connects local devices.
+
+The router connects the local network to another network.
+
+---
+
+# Router vs Modem
+
+| Router              | Modem                                 |
+| ------------------- | ------------------------------------- |
+| Connects networks   | Connects to ISP infrastructure        |
+| Routes packets      | Handles the ISP connection technology |
+| Uses routing tables | Converts or terminates access signals |
+| Can provide NAT     | Provides WAN connectivity             |
+
+Typical home network:
+
+```text
+Internet
+   |
+ Modem
+   |
+ Router
+   |
+ Switch / Wi-Fi
+   |
+ Devices
+```
+
+In many modern home networks, a single device performs the functions of:
+
+```text
+Modem
+Router
+Switch
+Wireless Access Point
+```
+
+---
+
+# Types of Network Communication
+
+Network communication can be classified based on how data is delivered.
+
+## Unicast
+
+**Unicast** communication occurs between one sender and one receiver.
+
+```text
+PC1 ----------> PC2
+```
+
+Example:
+
+A computer accessing a web server.
+
+```text
+Client ----------> Web Server
+```
+
+---
+
+## Broadcast
+
+**Broadcast** communication sends data from one device to all devices in the local broadcast domain.
+
+```text
+             ---> PC2
+PC1 ---> Switch ---> PC3
+             ---> PC4
+```
+
+An ARP Request is an example of broadcast communication.
+
+Example:
+
+```text
+Who has 192.168.1.10?
+```
+
+The request is sent to devices in the local broadcast domain.
+
+---
+
+## Multicast
+
+**Multicast** sends data to a specific group of devices.
+
+```text
+          ---> PC2
+Server --->
+          ---> PC3
+
+PC4 does not receive the data.
+```
+
+Multicast can be used in applications such as:
+
+* Streaming
+* Video distribution
+* Routing protocols
+
+---
+
+## Anycast
+
+**Anycast** allows multiple systems to use the same IP address.
+
+Network routing directs a client toward an available or topologically suitable server advertising that address.
+
+Example:
+
+```text
+           Server A
+          /
+Client ---
+          \
+           Server B
+```
+
+Anycast is commonly used by large distributed network services.
+
+It can help provide:
+
+* Lower latency
+* Redundancy
+* Global service distribution
+
+---
+
+# Basic Network Configuration
+
+At a minimum, a device commonly requires the following network configuration to access resources outside its local network:
+
+```text
+IP Address
+Subnet Mask
+Default Gateway
+DNS Server
+```
+
+Example:
+
+```text
+IP Address:      192.168.1.10
+Subnet Mask:     255.255.255.0
+Default Gateway: 192.168.1.1
+DNS Server:      8.8.8.8
+```
+
+## IP Address
+
+The IP address logically identifies the device on an IP network.
+
+## Subnet Mask
+
+The subnet mask helps the device determine which IP addresses belong to its local network.
+
+## Default Gateway
+
+The default gateway is used to communicate with devices outside the local network.
+
+## DNS Server
+
+The DNS server translates domain names into IP addresses.
+
+For example:
+
+```text
+google.com
+     |
+     v
+DNS Server
+     |
+     v
+IP Address
+```
+
+Without DNS, users would often need to access services using IP addresses instead of domain names.
+
+These settings can be configured manually or automatically using DHCP.
+
+---
+
+# Cybersecurity Relevance
+
+Networking is one of the most important foundations of cybersecurity.
+
+Security analysts frequently investigate network communication to identify suspicious activity.
+
+Important network information includes:
+
+```text
+Source IP Address
+Destination IP Address
+Source Port
+Destination Port
+Protocol
+Packet Size
+Connection Time
+Connection Frequency
+```
+
+For example:
+
+```text
+192.168.1.15 ---> 185.x.x.x
+```
+
+If an internal computer repeatedly communicates with an unknown external server, a security analyst may investigate the connection.
+
+This behavior could potentially indicate:
+
+* Malware communication
+* Command and Control (C2) traffic
+* Data exfiltration
+* Unauthorized software
+* Misconfigured applications
+
+Network segmentation is also important for security.
+
+Consider a company network:
+
+```text
+User Network
+     |
+     |
+Firewall
+     |
+     |
+Server Network
+```
+
+If an attacker compromises a user computer, network segmentation can help limit access to critical servers.
+
+Security analysts use tools such as:
+
+```text
+Wireshark
+tcpdump
+Nmap
+Netcat
+SIEM platforms
+IDS/IPS
+```
+
+to analyze network activity.
+
+Understanding basic networking concepts makes it easier to investigate:
+
+* Suspicious connections
+* Port scans
+* Unauthorized access
+* Malware traffic
+* DNS activity
+* Network attacks
+
+---
+
+# What I Learned
+
+From studying networking fundamentals, I learned that a computer network allows multiple devices to communicate and exchange information.
+
+Data is divided into smaller units and transmitted through wired or wireless communication media.
+
+Network protocols define the rules devices follow during communication.
+
+Switches connect devices within local networks and mainly use MAC addresses, while routers connect different networks and use IP addresses.
+
+A basic network configuration commonly includes an IP address, subnet mask, default gateway, and DNS server.
+
+I also learned that bandwidth represents the theoretical capacity of a network connection, latency represents communication delay, and throughput represents the actual amount of data successfully transferred.
+
+From a cybersecurity perspective, networking knowledge is essential for understanding normal communication and identifying suspicious network behavior.
